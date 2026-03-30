@@ -17,7 +17,7 @@ Traditional IVRs often rely on rigid "press 1 for X" menus that lead to high cus
 
 ## 🏗️ Architecture
 
-![Architecture Diagram](https://github.com/BTheodor/Intelligent-IVR-with-Amazon-Connect-Lex-and-Lambda/blob/main/architecture/diagram_logic.md) *(Placeholder: Diagram includes Connect, Lex, Lambda, and DynamoDB flow)*
+[Architecture Diagram](https://github.com/BTheodor/Intelligent-IVR-with-Amazon-Connect-Lex-and-Lambda/blob/main/architecture/diagram_logic.md) *(Placeholder: Diagram includes Connect, Lex, Lambda, and DynamoDB flow)*
 
 1.  **Entry Point:** The caller dials the Amazon Connect number.
 2.  **Customer Lookup:** An AWS Lambda function searches for the caller's phone number in a DynamoDB table (Mock CRM).
