@@ -1,0 +1,54 @@
+{
+  "Version": "2019-10-30",
+  "StartAction": "1",
+  "Metadata": {
+    "Name": "Intelligent-IVR-Main-Flow",
+    "Description": "Main flow with Lex and Lambda dynamic routing."
+  },
+  "Actions": [
+    {
+      "Identifier": "1",
+      "Type": "InvokeLambdaFunction",
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:region:account:function:IVR-Customer-Lookup"
+      },
+      "Transitions": {
+        "NextAction": "2",
+        "Errors": [
+          { "NextAction": "3", "ErrorType": "NoMatch" }
+        ]
+      }
+    },
+    {
+      "Identifier": "2",
+      "Type": "GetCustomerInput",
+      "Parameters": {
+        "Text": "Hello $.Attributes.CustomerName. How can I help you today?",
+        "LexBot": "Intelligent-IVR-Bot"
+      },
+      "Transitions": {
+        "NextAction": "4",
+        "Errors": [
+          { "NextAction": "5", "ErrorType": "NoMatch" }
+        ]
+      }
+    },
+    {
+      "Identifier": "4",
+      "Type": "InvokeLambdaFunction",
+      "Parameters": {
+        "LambdaFunctionARN": "arn:aws:lambda:region:account:function:IVR-Routing-Logic"
+      },
+      "Transitions": {
+        "NextAction": "6"
+      }
+    },
+    {
+      "Identifier": "6",
+      "Type": "TransferToQueue",
+      "Parameters": {
+        "Queue": "$.Attributes.QueueName"
+      }
+    }
+  ]
+}

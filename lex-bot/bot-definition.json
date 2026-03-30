@@ -1,0 +1,37 @@
+{
+  "name": "Intelligent-IVR-Bot",
+  "intents": [
+    {
+      "name": "CheckBalance",
+      "sampleUtterances": [
+        "What is my current balance?",
+        "How much money is in my account?",
+        "Check my balance"
+      ],
+      "slots": [
+        {
+          "name": "AccountType",
+          "slotType": "AMAZON.AlphaNumeric",
+          "slotConstraint": "Required"
+        }
+      ]
+    },
+    {
+      "name": "SpeakToAgent",
+      "sampleUtterances": [
+        "I need help from a person",
+        "Let me talk to an agent",
+        "Transfer me to a human"
+      ]
+    },
+    {
+      "name": "UpdateMembership",
+      "sampleUtterances": [
+        "I want to upgrade my account",
+        "Update my membership tier"
+      ]
+    }
+  ],
+  "locale": "en_US",
+  "childDirected": false
+}
